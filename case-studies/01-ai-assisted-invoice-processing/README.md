@@ -36,7 +36,7 @@ The environment involved procurement, accounts payable, vendor invoices, and Odo
 
 Invoices could enter through a local folder or Telegram. The MVP was designed to complement an existing structured invoice import flow and add a more flexible channel for PDF-based intake.
 
-All details in this draft are anonymized. Real vendors, tax IDs, amounts, documents, credentials, databases, local paths, and internal screenshots must remain private.
+All details in this public case study are anonymized. Real vendors, tax IDs, amounts, documents, credentials, databases, local paths, and internal screenshots remain private.
 
 ## My Role
 
@@ -189,7 +189,7 @@ The MVP supports qualitative operational improvements without claiming unsupport
 - better auditability after draft creation;
 - a safer foundation for future procure-to-pay automation.
 
-No quantitative savings, success rate, volume processed, or accuracy metric is claimed in this draft because those numbers are not yet supported by sanitized evidence.
+No quantitative savings, success rate, volume processed, or accuracy metric is claimed in this public version because those numbers are not yet supported by sanitized evidence.
 
 ## Recruiter Signal
 
@@ -216,9 +216,7 @@ It shows:
 
 ## Next Steps
 
-- Build a public demo dataset with fictional invoices and suppliers.
-- Replace all private vendors, tax IDs, amounts, screenshots, and paths with placeholders or synthetic examples.
-- Add a sanitized example of a staged invoice payload.
-- Add a sanitized example of an audit result.
-- Create a cleaner public diagram if this case moves into the public portfolio.
+- Extend the synthetic demo dataset with additional invoice scenarios.
+- Add a cleaner visual diagram if this case is later expanded beyond Markdown.
+- Add sanitized pseudocode only if it can be reviewed without exposing private configuration or business rules.
 - Define public metrics only after they are supported by safe evidence.
