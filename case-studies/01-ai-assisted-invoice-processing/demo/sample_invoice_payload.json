@@ -1,0 +1,38 @@
+{
+  "demo_notice": "Synthetic demo data only. Not based on a real invoice.",
+  "document_type": "vendor_bill",
+  "document_number": "INV-DEMO-0001",
+  "supplier_name": "Supplier Demo A",
+  "supplier_tax_id": "CUIT_FICTICIO",
+  "invoice_date": "2026-05-18",
+  "currency": "USD",
+  "net_amount": 1000.0,
+  "tax_amount": 210.0,
+  "total_amount": 1210.0,
+  "confidence_score": 0.86,
+  "extraction_method": "pdf_text_with_ocr_fallback_demo",
+  "warnings": [
+    "Demo warning: supplier should be reviewed before ERP draft creation.",
+    "Demo warning: tax treatment should be validated by a human reviewer."
+  ],
+  "line_items": [
+    {
+      "description": "Demo service line A",
+      "quantity": 1,
+      "unit_price": 600.0,
+      "net_amount": 600.0,
+      "tax_rate": 0.21,
+      "tax_amount": 126.0,
+      "total_amount": 726.0
+    },
+    {
+      "description": "Demo service line B",
+      "quantity": 1,
+      "unit_price": 400.0,
+      "net_amount": 400.0,
+      "tax_rate": 0.21,
+      "tax_amount": 84.0,
+      "total_amount": 484.0
+    }
+  ]
+}

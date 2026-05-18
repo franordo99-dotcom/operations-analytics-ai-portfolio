@@ -1,0 +1,35 @@
+{
+  "demo_notice": "Synthetic demo data only. Not based on a real Odoo draft or audit log.",
+  "audit_id": "AUDIT-DEMO-0001",
+  "staging_id": "STG-DEMO-0001",
+  "odoo_draft_ref": "ODOO-DRAFT-DEMO-0001",
+  "checks": [
+    {
+      "name": "duplicate_check",
+      "status": "passed_demo",
+      "details": "No duplicate found using demo keys."
+    },
+    {
+      "name": "pdf_attachment",
+      "status": "passed_demo",
+      "details": "Demo PDF reference attached to draft record."
+    },
+    {
+      "name": "amount_consistency",
+      "status": "passed_demo",
+      "details": "Net amount + tax amount equals total amount in the demo payload."
+    },
+    {
+      "name": "human_review_required",
+      "status": "warning_demo",
+      "details": "Supplier and tax treatment should be reviewed before final posting."
+    }
+  ],
+  "warnings": [
+    "Demo warning: this audit does not represent a real ERP result.",
+    "Demo warning: no production accuracy or success rate should be inferred."
+  ],
+  "result": "draft_created_with_review_warning_demo",
+  "reviewed_by": "Human Reviewer Demo",
+  "reviewed_at": "2026-05-18T10:15:00-03:00"
+}
