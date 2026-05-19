@@ -1,0 +1,14 @@
+{
+  "demo_notice": "Synthetic demo data. Not based on real suppliers, invoices, payments, Odoo records, logs, or accounting data.",
+  "run_id": "PAYMENT-PRELOAD-DEMO-RUN-001",
+  "rows_processed": 4,
+  "rows_created": 2,
+  "rows_skipped": 1,
+  "rows_with_errors": 1,
+  "warnings": [
+    "Demo warning: one row was skipped because load_to_odoo was false.",
+    "Demo warning: one row required manual review because the supplier could not be resolved."
+  ],
+  "result": "demo_run_completed_with_warnings"
+}
+

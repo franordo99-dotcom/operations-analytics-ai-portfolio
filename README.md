@@ -26,6 +26,7 @@ The goal is not to publish raw internal work. The goal is to show how I think th
 ## Current Case Studies
 
 - [AI-Assisted Invoice Processing for Procurement Operations](case-studies/01-ai-assisted-invoice-processing/README.md)
+- [Risk-Controlled Payment Preparation Workflow in Odoo](case-studies/02-odoo-payment-order-preload/README.md)
 
 ## How To Read The Case Studies
 

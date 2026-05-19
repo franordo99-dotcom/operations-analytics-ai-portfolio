@@ -1,0 +1,21 @@
+{
+  "demo_notice": "Synthetic demo data. Not based on real suppliers, invoices, payments, Odoo records, logs, or accounting data.",
+  "payment_group_ref": "PAYMENT_GROUP_DEMO_0001",
+  "action": "updated_existing_draft_group_demo",
+  "payments": [
+    {
+      "payment_ref": "PAYMENT_DEMO_0001",
+      "supplier_name": "Supplier Demo B",
+      "currency": "USD",
+      "amount": 1250.0,
+      "status": "linked_to_group_demo"
+    }
+  ],
+  "total_amount": 1250.0,
+  "status": "draft_requires_human_review_demo",
+  "audit_notes": [
+    "Demo audit note: payment was linked to a draft group.",
+    "Demo audit note: final approval remains a human-controlled step."
+  ]
+}
+

@@ -1,0 +1,17 @@
+{
+  "demo_notice": "Synthetic demo data. Not based on real suppliers, invoices, payments, Odoo records, logs, or accounting data.",
+  "supplier_name": "Supplier Demo B",
+  "supplier_ref": "SUP-DEMO-002",
+  "payment_date": "2026-05-18",
+  "currency": "USD",
+  "amount": 1250.0,
+  "invoice_refs": [
+    "INV-DEMO-0101",
+    "INV-DEMO-0102"
+  ],
+  "journal": "JOURNAL_DEMO",
+  "payment_method": "PAYMENT_METHOD_DEMO",
+  "load_to_odoo": true,
+  "notes": "Demo note: validate supplier, invoice references, amount, and payment method before ERP write."
+}
+

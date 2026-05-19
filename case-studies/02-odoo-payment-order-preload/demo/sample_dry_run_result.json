@@ -1,0 +1,49 @@
+{
+  "demo_notice": "Synthetic demo data. Not based on real suppliers, invoices, payments, Odoo records, logs, or accounting data.",
+  "validation_status": "passed_with_warnings_demo",
+  "resolved_supplier": {
+    "name": "Supplier Demo B",
+    "odoo_ref": "ODOO_SUPPLIER_DEMO_002",
+    "resolution_method": "demo_supplier_reference"
+  },
+  "resolved_invoices": [
+    {
+      "invoice_ref": "INV-DEMO-0101",
+      "odoo_ref": "ODOO_INVOICE_DEMO_0101",
+      "status": "matched_demo"
+    },
+    {
+      "invoice_ref": "INV-DEMO-0102",
+      "odoo_ref": "ODOO_INVOICE_DEMO_0102",
+      "status": "matched_demo"
+    }
+  ],
+  "duplicate_check": {
+    "status": "no_duplicate_found_demo",
+    "matching_keys": [
+      "supplier_ref",
+      "currency",
+      "amount",
+      "payment_date",
+      "payment_method"
+    ]
+  },
+  "payment_group_action": "would_update_existing_draft_group_demo",
+  "warnings": [
+    "Demo warning: payment method should be reviewed before final execution.",
+    "Demo warning: invoice references are synthetic and do not represent real ERP records."
+  ],
+  "would_create_records": [
+    {
+      "model": "account.payment",
+      "demo_ref": "PAYMENT_DEMO_0001"
+    }
+  ],
+  "would_update_records": [
+    {
+      "model": "account.payment.group",
+      "demo_ref": "PAYMENT_GROUP_DEMO_0001"
+    }
+  ]
+}
+
