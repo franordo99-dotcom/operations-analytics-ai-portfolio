@@ -1,5 +1,7 @@
 # Operations Analytics and AI Portfolio
 
+Spanish version: [README.es.md](README.es.md)
+
 This portfolio presents selected, sanitized case studies at the intersection of operations, procurement, supply chain, ERP workflows, process improvement, data analysis, automation, and applied AI.
 
 It is designed for recruiters, hiring managers, and teams looking for a hybrid profile: someone who understands operational problems, can structure messy workflows, and can use data, systems, and AI pragmatically without removing business control.

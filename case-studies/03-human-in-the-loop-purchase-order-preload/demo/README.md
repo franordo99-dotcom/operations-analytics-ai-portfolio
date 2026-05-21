@@ -1,5 +1,7 @@
 # Demo Artifacts
 
+Spanish version: [README.es.md](README.es.md)
+
 These demo files are 100% synthetic.
 
 They are not based on real suppliers, products, purchase orders, invoices, prices, taxes, Odoo records, logs, screenshots, or company data.

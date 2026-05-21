@@ -1,5 +1,7 @@
 # Legacy Tax Workflow Automation with Odoo and SICORE
 
+Spanish version: [README.es.md](README.es.md)
+
 Case type: Legacy system automation / ERP-to-desktop workflow / Tax operations support
 
 ## Executive Summary

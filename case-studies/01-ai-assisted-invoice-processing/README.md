@@ -1,5 +1,7 @@
 # AI-Assisted Invoice Processing for Procurement Operations
 
+Spanish version: [README.es.md](README.es.md)
+
 Case type: Procurement automation / Invoice intake / AI-assisted ERP workflow
 
 ## Executive Summary

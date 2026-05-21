@@ -1,5 +1,7 @@
 # Demo Artifacts
 
+Spanish version: [README.es.md](README.es.md)
+
 These files are 100% synthetic.
 
 They do not come from real invoices, real suppliers, real ERP records, real logs, real SQLite databases, or real audit outputs. They are included only to illustrate the design of the workflow described in the case study.

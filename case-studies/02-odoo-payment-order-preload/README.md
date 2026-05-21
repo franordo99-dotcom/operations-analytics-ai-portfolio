@@ -1,5 +1,7 @@
 # Risk-Controlled Payment Preparation Workflow in Odoo
 
+Spanish version: [README.es.md](README.es.md)
+
 Case type: Procure-to-pay automation / ERP workflow / Risk-controlled operations
 
 ## Executive Summary

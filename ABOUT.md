@@ -1,5 +1,7 @@
 # About
 
+Spanish version: [ABOUT.es.md](ABOUT.es.md)
+
 I am an Industrial Engineer with experience in procurement, operations, ERP workflows, cost control, process improvement, data analysis, and applied AI automation.
 
 My professional focus is on bridging business operations and technical execution. I work on problems where process understanding matters as much as tooling: invoice workflows, procurement controls, ERP data flows, cost visibility, administrative automation, and operational reporting.

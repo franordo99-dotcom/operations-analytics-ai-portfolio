@@ -1,5 +1,7 @@
 # Demo Artifacts
 
+Spanish version: [README.es.md](README.es.md)
+
 These files are 100% synthetic.
 
 They do not come from real suppliers, real invoices, real payments, real Odoo records, real logs, real Excel files, or real accounting data. They are included only to illustrate the design of the workflow described in the case study.

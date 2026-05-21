@@ -1,5 +1,7 @@
 # Human-in-the-Loop Purchase Order Preload into Odoo
 
+Spanish version: [README.es.md](README.es.md)
+
 Case type: Procurement automation / AI-assisted operations / Human-in-the-loop ERP workflow
 
 ## Executive Summary
