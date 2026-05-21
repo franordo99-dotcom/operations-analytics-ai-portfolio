@@ -1,0 +1,32 @@
+{
+  "demo_notice": "Synthetic demo data. Not based on real suppliers, products, purchase orders, invoices, prices, taxes, Odoo records, logs, screenshots, or company data.",
+  "audit_ref": "PO-PRELOAD-AUDIT-DEMO-0001",
+  "events": [
+    {
+      "step": "input_received",
+      "ref": "PURCHASE-INPUT-DEMO-0001",
+      "actor": "human_user_demo"
+    },
+    {
+      "step": "ai_assisted_resolution",
+      "ref": "AI-RESOLUTION-DEMO-0001",
+      "actor": "codex_demo"
+    },
+    {
+      "step": "validation_completed",
+      "ref": "VALIDATION-DEMO-0001",
+      "actor": "validation_layer_demo"
+    },
+    {
+      "step": "odoo_draft_prepared",
+      "ref": "ODOO-DRAFT-PO-DEMO-0001",
+      "actor": "erp_preload_demo"
+    },
+    {
+      "step": "human_review_required",
+      "ref": "HUMAN-REVIEW-DEMO-0001",
+      "actor": "human_user_demo"
+    }
+  ],
+  "result": "draft_ready_for_human_review_demo"
+}

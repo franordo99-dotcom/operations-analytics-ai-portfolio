@@ -1,0 +1,29 @@
+{
+  "demo_notice": "Synthetic demo data. Not based on real suppliers, products, purchase orders, invoices, prices, taxes, Odoo records, logs, screenshots, or company data.",
+  "review_ref": "HUMAN-REVIEW-DEMO-0001",
+  "draft_ref": "ODOO-DRAFT-PO-DEMO-0001",
+  "review_required": true,
+  "checklist": [
+    {
+      "control": "supplier_matches_request",
+      "status": "pending_human_review"
+    },
+    {
+      "control": "products_and_uom_are_correct",
+      "status": "pending_human_review"
+    },
+    {
+      "control": "prices_quantities_and_taxes_are_valid",
+      "status": "pending_human_review"
+    },
+    {
+      "control": "no_duplicate_purchase_order",
+      "status": "pending_human_review"
+    },
+    {
+      "control": "ready_for_manual_approval",
+      "status": "pending_human_decision"
+    }
+  ],
+  "final_decision": "not_approved_in_demo"
+}

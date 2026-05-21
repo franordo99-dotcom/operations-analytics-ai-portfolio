@@ -27,6 +27,9 @@ The goal is not to publish raw internal work. The goal is to show how I think th
 
 - [AI-Assisted Invoice Processing for Procurement Operations](case-studies/01-ai-assisted-invoice-processing/README.md)
 - [Risk-Controlled Payment Preparation Workflow in Odoo](case-studies/02-odoo-payment-order-preload/README.md)
+- [Human-in-the-Loop Purchase Order Preload into Odoo](case-studies/03-human-in-the-loop-purchase-order-preload/README.md)
+
+The first three cases form a Procure-to-Pay automation sequence: purchase order preparation, invoice processing, and payment preparation.
 
 ## How To Read The Case Studies
 

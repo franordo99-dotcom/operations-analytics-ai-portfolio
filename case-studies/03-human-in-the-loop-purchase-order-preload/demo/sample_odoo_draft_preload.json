@@ -1,0 +1,25 @@
+{
+  "demo_notice": "Synthetic demo data. Not based on real suppliers, products, purchase orders, invoices, prices, taxes, Odoo records, logs, screenshots, or company data.",
+  "draft_ref": "ODOO-DRAFT-PO-DEMO-0001",
+  "source_input_ref": "PURCHASE-INPUT-DEMO-0001",
+  "odoo_state": "draft",
+  "supplier": "Supplier Demo A",
+  "lines": [
+    {
+      "line_ref": "LINE-DEMO-001",
+      "product": "Product Demo A",
+      "quantity": "QUANTITY_DEMO",
+      "unit_price": "PRICE_DEMO",
+      "tax": "TAX_DEMO"
+    },
+    {
+      "line_ref": "LINE-DEMO-002",
+      "product": "Product Demo B",
+      "quantity": "QUANTITY_DEMO",
+      "unit_price": "PRICE_DEMO",
+      "tax": "TAX_DEMO"
+    }
+  ],
+  "approval_status": "human_review_required",
+  "automatic_confirmation": false
+}

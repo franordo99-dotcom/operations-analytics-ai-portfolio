@@ -1,0 +1,33 @@
+{
+  "demo_notice": "Synthetic demo data. Not based on real suppliers, products, purchase orders, invoices, prices, taxes, Odoo records, logs, screenshots, or company data.",
+  "resolution_ref": "AI-RESOLUTION-DEMO-0001",
+  "input_ref": "PURCHASE-INPUT-DEMO-0001",
+  "resolved_supplier": {
+    "name": "Supplier Demo A",
+    "odoo_ref": "ODOO_SUPPLIER_DEMO"
+  },
+  "resolved_lines": [
+    {
+      "line_ref": "LINE-DEMO-001",
+      "resolved_product": "Product Demo A",
+      "resolved_uom": "UOM_DEMO",
+      "resolved_currency": "CURRENCY_DEMO",
+      "resolved_tax": "TAX_DEMO",
+      "resolved_picking_type": "PICKING_TYPE_DEMO",
+      "confidence": "review_required"
+    },
+    {
+      "line_ref": "LINE-DEMO-002",
+      "resolved_product": "Product Demo B",
+      "resolved_uom": "UOM_DEMO",
+      "resolved_currency": "CURRENCY_DEMO",
+      "resolved_tax": "TAX_DEMO",
+      "resolved_picking_type": "PICKING_TYPE_DEMO",
+      "confidence": "review_required"
+    }
+  ],
+  "assumptions": [
+    "Supplier and products must be checked by a human before approval.",
+    "Tax and picking context are demo placeholders."
+  ]
+}

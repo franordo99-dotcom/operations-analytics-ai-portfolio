@@ -1,0 +1,16 @@
+{
+  "demo_notice": "Synthetic demo data. Not based on real suppliers, products, purchase orders, invoices, prices, taxes, Odoo records, logs, screenshots, or company data.",
+  "validation_ref": "VALIDATION-DEMO-0001",
+  "input_ref": "PURCHASE-INPUT-DEMO-0001",
+  "dry_run_status": "ready_for_draft_review",
+  "critical_blockers": [],
+  "warnings": [
+    "Human review required before confirming the purchase order.",
+    "Demo tax and picking context must not be interpreted as real ERP configuration."
+  ],
+  "duplicate_check": {
+    "status": "no_duplicate_detected_demo",
+    "idempotency_key": "IDEMPOTENCY-DEMO-PO-0001"
+  },
+  "next_step": "preload_odoo_draft_for_human_review"
+}

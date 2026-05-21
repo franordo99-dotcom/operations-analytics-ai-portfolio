@@ -1,0 +1,24 @@
+{
+  "demo_notice": "Synthetic demo data. Not based on real suppliers, products, purchase orders, invoices, prices, taxes, Odoo records, logs, screenshots, or company data.",
+  "input_ref": "PURCHASE-INPUT-DEMO-0001",
+  "input_type": "invoice_or_purchase_request_demo",
+  "source_channel": "codex_session_demo",
+  "supplier_hint": "Supplier Demo A",
+  "requested_items": [
+    {
+      "line_ref": "LINE-DEMO-001",
+      "description": "Product Demo A",
+      "quantity": "QUANTITY_DEMO",
+      "unit_of_measure_hint": "UOM_DEMO",
+      "price_hint": "PRICE_DEMO"
+    },
+    {
+      "line_ref": "LINE-DEMO-002",
+      "description": "Product Demo B",
+      "quantity": "QUANTITY_DEMO",
+      "unit_of_measure_hint": "UOM_DEMO",
+      "price_hint": "PRICE_DEMO"
+    }
+  ],
+  "human_instruction": "Prepare an Odoo draft purchase order for review."
+}
