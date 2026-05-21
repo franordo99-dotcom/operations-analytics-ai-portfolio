@@ -1,0 +1,15 @@
+{
+  "demo_notice": "Synthetic demo data. Not based on real suppliers, tax IDs, withholding certificates, Odoo records, SICORE exports, logs, screenshots, or company data.",
+  "record_ref": "WITHHOLDING-DEMO-0001",
+  "supplier_name": "SUPPLIER_DEMO",
+  "supplier_tax_id": "TAX_ID_DEMO",
+  "payment_group_ref": "PAYMENT_GROUP_DEMO",
+  "payment_ref": "PAYMENT_ID_DEMO",
+  "withholding_ref": "WITHHOLDING_ID_DEMO",
+  "withholding_type": "WITHHOLDING_TYPE_DEMO",
+  "withholding_date": "DATE_DEMO",
+  "base_amount": "BASE_AMOUNT_DEMO",
+  "withholding_amount": "WITHHOLDING_AMOUNT_DEMO",
+  "currency": "CURRENCY_DEMO",
+  "review_status": "human_review_required"
+}

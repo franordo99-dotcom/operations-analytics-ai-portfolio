@@ -1,0 +1,22 @@
+{
+  "demo_notice": "Synthetic demo data. Not based on real suppliers, tax IDs, withholding certificates, Odoo records, SICORE exports, logs, screenshots, or company data.",
+  "workbook_ref": "CONTROL-WORKBOOK-DEMO-001",
+  "sheets": [
+    {
+      "name": "summary_demo",
+      "rows": "ROW_COUNT_DEMO",
+      "purpose": "high-level control totals"
+    },
+    {
+      "name": "withholdings_demo",
+      "rows": "ROW_COUNT_DEMO",
+      "purpose": "reviewable withholding rows"
+    },
+    {
+      "name": "warnings_demo",
+      "rows": "ROW_COUNT_DEMO",
+      "purpose": "manual review items"
+    }
+  ],
+  "review_status": "requires_human_review_demo"
+}

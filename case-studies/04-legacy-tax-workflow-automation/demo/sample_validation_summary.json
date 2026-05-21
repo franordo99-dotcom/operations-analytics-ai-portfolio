@@ -1,0 +1,11 @@
+{
+  "demo_notice": "Synthetic demo data. Not based on real suppliers, tax IDs, withholding certificates, Odoo records, SICORE exports, logs, screenshots, or company data.",
+  "run_ref": "TAX-WORKFLOW-DEMO-RUN-001",
+  "records_reviewed": "COUNT_DEMO",
+  "records_ready_for_manual_review": "COUNT_DEMO",
+  "records_with_warnings": "COUNT_DEMO",
+  "official_certificate_issued": false,
+  "automatic_pdf_printing_performed": false,
+  "human_supervision_required": true,
+  "result": "demo_preparation_completed_with_human_review_required"
+}
