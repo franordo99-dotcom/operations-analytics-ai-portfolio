@@ -1,0 +1,26 @@
+{
+  "demo_notice": "Synthetic demo data. Not based on real leads, emails, phone numbers, customers, prospects, social-media campaigns, Meta records, Odoo records, Google Sheets, logs, screenshots, or company data.",
+  "run_id": "SOCIAL-RUN-DEMO-20260521-001",
+  "flow": "social_leads_via_sheets",
+  "dry_run": true,
+  "trigger_type": "time_driven_demo",
+  "source_validation": {
+    "headers_valid": true,
+    "source_sheet_read_only": true,
+    "required_columns_present": true
+  },
+  "rows": {
+    "max_rows_per_run": 25,
+    "rows_scanned": 12,
+    "rows_skipped_already_processed": 4,
+    "rows_discarded_test_lead": 1,
+    "rows_with_missing_data": 2,
+    "rows_eligible": 5,
+    "crm_leads_created": 0,
+    "crm_leads_would_create": 5
+  },
+  "warnings": [
+    "Dry run enabled; no CRM records were created in this synthetic example."
+  ],
+  "health_check_status": "passed"
+}

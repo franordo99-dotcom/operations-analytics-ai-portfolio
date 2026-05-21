@@ -1,0 +1,29 @@
+{
+  "demo_notice": "Synthetic demo data. Not based on real leads, emails, phone numbers, customers, prospects, social-media campaigns, Meta records, Odoo records, Google Sheets, logs, screenshots, or company data.",
+  "mapping_id": "SOCIAL-MAPPING-DEMO-0001",
+  "source_row_ref": "DEMO-SOCIAL-ROW-0001",
+  "mapping_status": "mapped",
+  "target_model": "crm.lead",
+  "mapped_fields": {
+    "name": "Social lead - [LEAD_NAME_DEMO]",
+    "contact_name": "[LEAD_NAME_DEMO]",
+    "email_from": "[EMAIL_DEMO]",
+    "phone": "[PHONE_DEMO]",
+    "city": "Demo City",
+    "description": "Synthetic social lead generated from a source Sheet row.",
+    "source": "[ODOO_SOURCE_DEMO]",
+    "tags": [
+      "[ODOO_TAG_SOCIAL_DEMO]",
+      "[ODOO_TAG_REVIEW_DEMO]"
+    ]
+  },
+  "excluded_private_fields": [
+    "source_sheet_id",
+    "real_campaign_name",
+    "real_adset_name",
+    "real_ad_name",
+    "real_form_name",
+    "real_external_lead_id"
+  ],
+  "review_notes": "Fields are mapped into a CRM-ready structure without exposing live source data."
+}

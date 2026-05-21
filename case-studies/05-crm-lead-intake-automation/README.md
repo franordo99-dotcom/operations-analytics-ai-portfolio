@@ -1,183 +1,305 @@
-# CRM Lead Intake Automation with Gmail, Sheets and Odoo
+# CRM Lead Intake Automation with Gmail, Social Lead Sheets and Odoo
 
-Case type: CRM automation / Sales operations / Lead intake workflow
+Case type: CRM automation / Sales operations / Multi-source lead intake workflow
 
 ## Executive Summary
 
-This case documents a controlled lead-intake workflow that turns web-form emails in Gmail into traceable Odoo CRM leads.
+This case documents a controlled CRM lead-intake workflow that connects two related lead sources with Odoo CRM:
 
-The workflow uses Google Apps Script to search candidate emails, parse lead fields, validate minimum contact data, stage processing results in Google Sheets, deduplicate against prior audit records and Odoo CRM, and create `crm.lead` records when the lead is eligible.
+- Gmail/web-form emails.
+- Social/Meta leads already available in Google Sheets.
 
-The goal was not to build a fully autonomous sales system. The goal was to reduce manual CRM entry risk, avoid duplicate opportunities, preserve processing traceability, and create a safer operational base for Sales Operations automation.
+The workflow uses Google Apps Script, Google Sheets audit/staging layers, deduplication, `DRY_RUN`, run logs, health checks, triggers, and Odoo JSON-RPC to prepare and create `crm.lead` records when each lead is eligible.
+
+The goal was not to claim complete channel coverage. The goal was to reduce manual CRM-entry risk, preserve traceability across lead sources, make duplicates and exceptions visible, and create a safer operating base for Sales Operations automation.
 
 ## Why This Matters
 
-Lead intake is one of the first operational control points in a commercial process. If a lead is lost, duplicated, incomplete, or loaded with poor data quality, the downstream sales workflow becomes harder to manage.
+Lead intake is one of the first control points in a commercial operation. If leads arrive through different sources and are handled manually, they can be lost, duplicated, delayed, or loaded into CRM with weak data quality.
 
-For a small or growing operation, the problem is rarely only technical. It is operational: where did the lead come from, was it already processed, was it duplicated in CRM, what happened during the run, and who needs to review exceptions?
+The business problem is not just "copy lead data into Odoo." The real problem is operational control:
 
-This case matters because it treats CRM automation as a controlled intake process, not just as a script that copies text from email into an ERP.
+- Which source did the lead come from?
+- Was it already processed?
+- Does it have enough data to create a CRM record?
+- Is it a duplicate?
+- What happened during the run?
+- Which rows or messages need human review?
+
+This case matters because it treats lead intake as a traceable Sales Operations workflow, not as blind automation.
 
 ## Business Problem
 
-The business problem was a common Sales Operations issue: leads arrived through web-form emails and needed to be captured in Odoo CRM without being lost, duplicated, or loaded with incomplete information.
+The operating need was to automate lead intake into Odoo CRM from digital sources while keeping control over data quality and duplicates.
 
-The main risks were:
+The two supported flows had different input shapes:
 
-- manual copy/paste from email to CRM;
-- missing or incomplete contact data;
-- duplicate leads in Odoo;
-- weak traceability of which messages were processed;
-- unclear status for failed or review-needed leads;
-- limited visibility into what each automated run did.
+- Gmail/web-form leads arrived as semi-structured emails.
+- Social/Meta leads arrived in a Google Sheet source already populated upstream.
 
-The objective was to build a controlled lead-intake workflow that could process Gmail leads, stage results in Sheets, deduplicate, and create CRM records with auditability.
+Both flows needed to reduce manual CRM entry, avoid duplicate lead creation, preserve run history, and make errors or review-needed items visible.
+
+The objective was to create a controlled intake pattern that could support multiple sources without claiming every possible channel.
 
 ## Context
 
-The implementation belongs to CRM Operations and Sales Operations automation.
+This case belongs to CRM Operations and Sales Operations automation.
 
-The audited public scope is intentionally narrow: Gmail/web-form email intake, Google Sheets audit/staging, and Odoo CRM lead creation.
+Implemented and evidenced scope:
 
-Social-media leads via a separate Google Sheets workflow were identified as a related project, but they are not included in the claims of this case study. WhatsApp and direct Instagram DM processing are out of scope for this MVP.
+- Gmail/web-form email intake.
+- Social/Meta leads via an already populated Google Sheet.
+- Google Sheets audit/staging layers.
+- Odoo CRM as the destination system.
+- Deduplication, `DRY_RUN`, run logs, health checks, triggers, and exception states.
 
-All public-facing content is sanitized. Real leads, emails, phone numbers, prospect names, messages, Sheet IDs, Gmail labels, Odoo URLs, Odoo IDs, logs, credentials, and screenshots are not included.
+Out of scope:
+
+- WhatsApp direct processing.
+- Direct Instagram DM processing.
+- Direct Meta API ingestion as a public claim.
+- Complete coverage of every possible lead channel.
+- Conversion, revenue, production volume, or KPI claims.
+- Autonomous sales follow-up or salesperson assignment.
+
+All public-facing content must remain sanitized. Real leads, emails, phone numbers, prospect names, campaign names, messages, Sheet IDs, Gmail labels, Odoo URLs, Odoo IDs, logs, credentials, screenshots, and source workbooks are not included.
+
+## Evidence Boundary
+
+This case combines two implementation evidence groups.
+
+### Gmail/web evidence
+
+Evidence supports:
+
+- Gmail query and message filtering.
+- Email body parsing.
+- Minimum lead-data validation.
+- `audit_log` and `run_log` in Google Sheets.
+- Idempotency by message ID.
+- Odoo duplicate checks by email and by name + phone.
+- `crm.lead` creation through JSON-RPC.
+- Gmail labels as visual support.
+- `DRY_RUN`, manual execution, time-driven trigger, debug tools, and health check.
+
+### Social/Meta Sheets evidence
+
+Evidence supports:
+
+- Separate Apps Script flow.
+- Read-only source Google Sheet containing social/Meta leads.
+- Operational audit workbook.
+- `rrss_odoo_audit_log` and `rrss_run_log`.
+- Source header validation and live-source validation.
+- Test-lead exclusion.
+- Minimum data validation.
+- Deduplication by external lead identifier and Odoo email/phone checks.
+- `crm.lead` creation through JSON-RPC.
+- `DRY_RUN`, max rows per run, time-driven trigger, Odoo validations, and health check.
+
+### Future or out-of-scope channels
+
+WhatsApp, direct Instagram DMs, direct Meta API ingestion, scoring, salesperson assignment, and conversion analytics are not claimed in this public case.
+
+### Synthetic demo
+
+The demo files are synthetic. They illustrate workflow design and are not evidence of production volume, accuracy, conversion, revenue, or operational performance.
 
 ## My Role
 
-My role was to structure the workflow from operational problem to working automation.
+My role was to structure the lead-intake problem as a controlled operating workflow.
 
 I worked on:
 
-- defining a safe lead-intake process;
-- separating Gmail search, parsing, validation, deduplication, CRM write, and audit logging;
-- using Google Sheets as a control layer;
-- validating minimum lead data before CRM creation;
-- avoiding duplicate CRM records where possible;
-- keeping `DRY_RUN`, logs, labels, and health checks as operational controls;
-- documenting the evidence boundary so the public case does not overclaim channels or impact.
+- defining how each source should enter the process;
+- separating source read, parsing/mapping, validation, deduplication, CRM write, and audit logging;
+- using Google Sheets as a control layer instead of a passive spreadsheet;
+- keeping `DRY_RUN`, run logs, trigger controls, and health checks as operational safeguards;
+- preserving human review for exceptions and incomplete data;
+- defining the publication boundary so the case reflects the real project without overclaiming channels or impact.
 
 ## Approach
 
-The approach was control-first:
+The approach was to build two source-specific intake flows that share the same operating principles.
+
+For Gmail/web-form leads:
 
 1. Search candidate Gmail messages with a controlled query.
-2. Exclude replies and forwards that should not create new leads.
+2. Exclude replies and forwards.
 3. Parse structured fields from the email body.
-4. Validate minimum contact requirements.
+4. Validate minimum contact data.
 5. Check whether the message was already audited.
 6. Deduplicate against Odoo CRM.
-7. Create the Odoo `crm.lead` only when the lead is eligible.
-8. Write every outcome to Google Sheets audit/run logs.
-9. Apply Gmail status labels as visual support.
-10. Use health checks and trigger controls to operate the workflow safely.
+7. Create the Odoo `crm.lead` only when eligible.
+8. Write outcomes to audit/run logs and apply status labels.
+
+For social/Meta leads via Sheets:
+
+1. Read rows from an already populated source Google Sheet.
+2. Keep the source Sheet read-only.
+3. Validate source headers and live-source configuration.
+4. Exclude test leads.
+5. Validate minimum contact data.
+6. Check audit history by external lead identifier and source row.
+7. Deduplicate against Odoo CRM.
+8. Create the Odoo `crm.lead` only when eligible.
+9. Write outcomes to an operational audit workbook and run log.
 
 ## Before / After
 
 | Before | After |
 |---|---|
-| Web-form leads handled manually from Gmail | Structured Gmail lead-intake workflow |
-| CRM creation depends on copy/paste | Parsed lead fields mapped into a CRM payload |
-| Duplicate checks depend on manual memory | Audit-log and Odoo deduplication checks |
-| Failed or incomplete leads are hard to trace | Reviewable statuses in Google Sheets |
-| Run visibility depends on manual inspection | Run logs and health checks |
-| Automation risk is hard to limit | `DRY_RUN`, batch limits, manual retry, and trigger controls |
+| Leads handled manually from email and sheets | Controlled multi-source lead intake workflow |
+| Source-specific context can get lost | Source-specific audit records and run logs |
+| CRM creation depends on manual copy/paste | Parsed/mapped lead fields prepared for Odoo CRM |
+| Duplicate checks depend on memory | Source-level and Odoo-level deduplication checks |
+| Failed or incomplete leads are hard to track | Review statuses and error logs |
+| Social lead source can be accidentally modified | Read-only source handling with separate operational workbook |
+| Automation risk is hard to limit | `DRY_RUN`, batch limits, trigger controls, and health checks |
 
 ## Solution
 
-The solution is a Google Apps Script workflow connected to Gmail, Google Sheets, and Odoo CRM.
+The solution is a controlled lead-intake pattern built on Google Apps Script, Google Sheets, and Odoo CRM.
 
-It searches for candidate lead emails, parses commercial contact fields, validates the minimum data needed for CRM creation, stages processing outcomes in a Google Sheet, checks for duplicates, and creates Odoo `crm.lead` records through JSON-RPC when appropriate.
+The Gmail/web flow turns candidate web-form emails into parsed lead data, stages the result in a Google Sheets audit log, checks duplicates, and creates Odoo `crm.lead` records when the lead is eligible.
 
-The workflow also records dry-run outcomes, duplicate detections, review-needed rows, errors, and run summaries. Gmail labels provide a secondary visual cue, while Google Sheets remains the operational audit layer.
+The social/Meta Sheets flow reads rows from a source Sheet that already contains social lead data, validates the source schema, maps fields into CRM-ready values, records outcomes in an operational audit workbook, checks duplicates, and creates Odoo `crm.lead` records when the row is eligible.
+
+Both flows prioritize traceability and control over blind automation.
 
 ## Architecture
 
 ```text
-Gmail web-form email
-        |
-        v
-Candidate search and filtering
-        |
-        v
-Email parser
-        |
-        v
-Minimum data validation
-        |
-        v
-Google Sheets audit/staging
-        |
-        v
-Deduplication against audit log and Odoo CRM
-        |
-        v
-Odoo crm.lead creation or controlled status
-        |
-        v
-Run log, Gmail label, and review trail
+Gmail/web-form email                 Social/Meta lead source Sheet
+        |                                      |
+        v                                      v
+Gmail query + parser                 Read-only source reader
+        |                                      |
+        v                                      v
+Minimum validation                   Header + minimum validation
+        |                                      |
+        v                                      v
+Google Sheets audit/run log          Operational audit workbook
+        |                                      |
+        +---------------+----------------------+
+                        |
+                        v
+             Deduplication controls
+                        |
+                        v
+              Odoo crm.lead payload
+                        |
+                        v
+        Create lead / dry-run / duplicate / review / error
+                        |
+                        v
+              Run logs + health checks
 ```
 
 ## Architecture Diagram
 
 ```mermaid
 flowchart TD
-    A["Gmail web-form email"] --> B["Candidate search and filtering"]
-    B --> C["Email parser"]
-    C --> D["Minimum data validation"]
-    D --> E["Google Sheets audit/staging"]
-    E --> F["Deduplication checks"]
-    F --> G["Odoo crm.lead payload"]
-    G --> H["Create lead or record status"]
-    H --> I["Run log and Gmail status label"]
+    A["Gmail / web-form email"] --> B["Gmail query and email parser"]
+    B --> C["Gmail minimum validation"]
+    C --> D["Gmail audit_log and run_log"]
 
-    D -. "missing contact data" .-> J["Pending review"]
-    F -. "duplicate found" .-> K["Duplicate status"]
-    H -. "technical failure" .-> L["Error status and retry path"]
+    E["Social / Meta lead source Sheet"] --> F["Read-only source reader"]
+    F --> G["Header and minimum validation"]
+    G --> H["Social operational audit workbook"]
+
+    D --> I["Deduplication controls"]
+    H --> I
+    I --> J["Odoo crm.lead payload"]
+    J --> K["Create lead or record controlled status"]
+    K --> L["Run logs and health checks"]
+
+    C -. "missing contact data" .-> M["Pending review"]
+    G -. "test lead or incomplete row" .-> N["Discarded or pending review"]
+    I -. "duplicate found" .-> O["Duplicate status"]
+    K -. "technical failure" .-> P["Error status and retry path"]
 ```
 
 ## Demo Artifacts
 
-The `demo/` folder contains synthetic examples:
+The `demo/` folder contains synthetic examples for both lead-intake flows.
 
-- `sample_lead_email.json`: fictitious Gmail web-form lead email.
-- `sample_parsed_lead.json`: fictitious parsed lead fields.
-- `sample_sheet_audit_record.json`: fictitious Google Sheets audit record.
-- `sample_deduplication_result.json`: fictitious deduplication decision.
-- `sample_odoo_crm_lead_payload.json`: fictitious Odoo CRM lead payload.
-- `sample_processing_log.json`: fictitious run-level processing log.
+Existing Gmail/web-form demo artifacts:
 
-These files are synthetic and are not based on real leads, emails, phone numbers, customers, prospects, Odoo records, Sheets, logs, or company data.
+- `sample_lead_email.json`: synthetic Gmail web-form lead email.
+- `sample_parsed_lead.json`: synthetic parsed lead fields.
+- `sample_sheet_audit_record.json`: synthetic Google Sheets audit/staging record.
+- `sample_deduplication_result.json`: synthetic deduplication decision.
+- `sample_odoo_crm_lead_payload.json`: synthetic Odoo CRM lead payload.
+- `sample_processing_log.json`: synthetic run-level processing log.
+
+New social/Meta Sheets demo artifacts:
+
+- `sample_social_lead_sheet_row.json`: synthetic source Sheet row for a social/Meta lead.
+- `sample_social_lead_mapping.json`: synthetic mapping from source row to CRM-ready fields.
+- `sample_social_deduplication_result.json`: synthetic deduplication decision.
+- `sample_social_audit_record.json`: synthetic operational audit record.
+- `sample_social_run_log.json`: synthetic social-flow run log.
+- `sample_multi_source_case_summary.json`: synthetic summary showing how the two flows fit the same lead-intake pattern.
+
+These files are not based on real leads, emails, phone numbers, customers, prospects, social-media campaigns, Meta records, Odoo records, Google Sheets, logs, screenshots, or company data.
 
 ## Tools & Methods
 
 - Google Apps Script as the automation runtime.
-- GmailApp for searching and labeling candidate messages.
-- Google Sheets as audit log, staging layer, and run log.
+- GmailApp for Gmail/web-form message search and labeling.
+- Google Sheets as audit log, staging layer, source layer, and run log.
+- Read-only source handling for social lead Sheets.
+- Header validation for source Sheets.
 - Odoo JSON-RPC for CRM integration.
 - `crm.lead` as the target Odoo CRM model.
-- Parser logic for structured email fields.
-- Deduplication by message audit, email, and name + phone.
+- Parser logic for email fields.
+- Mapper logic for social lead Sheet rows.
+- Deduplication by message ID, external lead identifier, email, and phone-based checks.
 - `DRY_RUN` for safe testing before CRM creation.
+- Batch limits for controlled runs.
 - Time-driven triggers for recurring execution.
-- Health checks and manual debug functions.
+- Health checks and debug functions.
 
 ## Validation & Controls
 
-The workflow includes:
+Gmail/web controls:
 
 - controlled Gmail query;
-- exclusion of replies and forwards;
+- reply/forward exclusion;
+- message ID idempotency;
 - minimum lead-data validation;
-- audit-log idempotency by message ID;
-- deduplication against Odoo CRM before creation;
-- `DRY_RUN` mode;
-- explicit statuses for created, duplicate, dry-run, pending review, and error;
-- run-level logging;
-- Gmail status labels as visual support;
-- manual retry path for error or review-needed rows;
-- trigger creation/deletion controls;
-- health check for properties, triggers, recent runs, and errors.
+- Google Sheets `audit_log`;
+- Google Sheets `run_log`;
+- Odoo duplicate checks by email and name + phone;
+- status labels as visual support;
+- `DRY_RUN`;
+- manual retry path;
+- trigger controls and health check.
+
+Social/Meta Sheets controls:
+
+- read-only source Sheet handling;
+- source header validation;
+- live-source validation;
+- external lead identifier checks;
+- source row tracking;
+- test-lead exclusion;
+- minimum lead-data validation;
+- operational audit workbook;
+- `rrss_odoo_audit_log`;
+- `rrss_run_log`;
+- Odoo duplicate checks by email and phone variants;
+- `DRY_RUN`;
+- max rows per run;
+- trigger controls and health check.
+
+Shared controls:
+
+- create CRM leads only when required checks pass;
+- preserve review-needed and error states;
+- keep run-level traceability;
+- avoid publishing raw operational data.
 
 ## What This Does Not Do
 
@@ -185,53 +307,58 @@ This case does not claim that the workflow:
 
 - processes WhatsApp messages;
 - processes direct Instagram DMs;
-- provides full omnichannel lead intake;
-- includes social-media Sheets intake inside this specific public case;
+- provides complete automation across every possible lead channel;
+- ingests leads directly from the Meta API as a public claim;
 - guarantees duplicate elimination;
-- improves conversion rate or revenue;
+- improves conversion rate;
+- produces revenue impact;
 - processes a claimed production volume;
 - assigns sales owners automatically;
+- runs autonomous sales follow-up;
 - replaces commercial review;
-- operates as a fully autonomous sales system;
-- publishes real leads, emails, phone numbers, messages, Sheet IDs, Gmail labels, Odoo URLs, Odoo IDs, logs, or credentials.
+- publishes real leads, emails, phone numbers, campaign data, Sheet IDs, Gmail labels, Odoo URLs, Odoo IDs, logs, screenshots, or credentials.
 
 ## Impact
 
 The impact is qualitative:
 
 - reduces manual CRM-entry friction;
-- improves traceability from Gmail message to CRM processing outcome;
+- improves traceability across web-form and social lead sources;
 - supports cleaner lead intake through minimum validation;
-- reduces duplicate-creation risk through audit and CRM checks;
-- makes failed or review-needed leads more visible;
-- creates a safer foundation for Sales Operations automation.
+- reduces duplicate-creation risk through source and Odoo checks;
+- makes failed, duplicated, discarded, or review-needed leads visible;
+- creates a stronger foundation for Sales Operations automation.
 
-No conversion improvement, revenue impact, lead volume, time savings, success rate, or error-reduction metric is claimed.
+No conversion improvement, revenue impact, production volume, time savings, success rate, or error-reduction metric is claimed.
 
 ## Recruiter Signal
 
 This case demonstrates:
 
 - CRM and Sales Operations understanding;
-- ability to convert a messy intake process into a controlled workflow;
-- practical integration across Gmail, Google Sheets, and Odoo CRM;
-- automation design with deduplication, logging, and safe-run controls;
-- operational judgment around privacy and data quality;
-- ability to build low-cost internal tools using existing business systems;
+- multi-source lead-intake design;
+- data-quality thinking around lead creation;
+- practical integration across Google Workspace and Odoo CRM;
+- Google Apps Script implementation judgment;
+- Google Sheets used as a staging/control layer;
+- deduplication and auditability;
+- operational controls such as `DRY_RUN`, run logs, triggers, and health checks;
+- privacy-aware automation in a commercial workflow;
 - clear boundary-setting between implemented scope and future channels.
 
 ## What I Learned
 
-- CRM automation needs traceability as much as field mapping.
-- Google Sheets can be a practical control layer when used intentionally.
-- Deduplication should combine source-level idempotency and CRM-level checks.
-- `DRY_RUN` and run logs are essential when automation writes to business systems.
-- A narrow, well-controlled workflow is stronger than an overclaimed omnichannel story.
+- Lead intake becomes more valuable when source-specific workflows share common controls.
+- Google Sheets can work as a practical audit/staging layer when it is designed intentionally.
+- Source-level idempotency and CRM-level deduplication solve different problems.
+- A read-only source pattern reduces risk when the incoming lead source is shared or externally populated.
+- `DRY_RUN`, run logs, and health checks are part of the product, not secondary utilities.
+- A precise scope is stronger than an overclaimed channel-coverage story.
 
 ## Next Steps
 
-- Run a final sensitive scan before public copy.
-- Decide whether the separate RRSS/Meta Sheets workflow should become a second CRM case or a future extension.
-- Add a public-safe diagram or mock screenshot using only synthetic data.
-- Add public metrics only if measured and safely anonymized.
-- Keep WhatsApp and direct Instagram DM processing clearly marked as future scope unless implemented and audited.
+- Run a final sensitive scan before any public update.
+- Publish only synthetic social-flow demo artifacts.
+- Add direct Meta API ingestion only if later implemented, audited, and sanitized.
+- Keep WhatsApp and direct Instagram DMs as future scope unless implemented and audited.
+- Add public metrics only if they are measured and safely anonymized.

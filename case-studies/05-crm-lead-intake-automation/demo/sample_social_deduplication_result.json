@@ -1,0 +1,20 @@
+{
+  "demo_notice": "Synthetic demo data. Not based on real leads, emails, phone numbers, customers, prospects, social-media campaigns, Meta records, Odoo records, Google Sheets, logs, screenshots, or company data.",
+  "deduplication_id": "SOCIAL-DEDUP-DEMO-0001",
+  "source_row_ref": "DEMO-SOCIAL-ROW-0001",
+  "checks": {
+    "audit_external_lead_id_seen": false,
+    "audit_source_row_seen": false,
+    "odoo_email_match": false,
+    "odoo_phone_match": false,
+    "minimum_contact_data_present": true,
+    "test_lead_detected": false
+  },
+  "decision": "eligible_for_crm_create",
+  "dry_run": true,
+  "would_create": {
+    "model": "crm.lead",
+    "record_ref": "ODOO-CRM-LEAD-DEMO"
+  },
+  "warnings": []
+}

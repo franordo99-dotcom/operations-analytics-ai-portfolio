@@ -1,0 +1,20 @@
+{
+  "demo_notice": "Synthetic demo data. Not based on real leads, emails, phone numbers, customers, prospects, social-media campaigns, Meta records, Odoo records, Google Sheets, logs, screenshots, or company data.",
+  "source_type": "social_lead_sheet",
+  "source_row_ref": "DEMO-SOCIAL-ROW-0001",
+  "external_lead_id": "SOCIAL-LEAD-DEMO-0001",
+  "created_at": "2026-05-21T14:30:00Z",
+  "platform": "Social Platform Demo",
+  "campaign_name": "[CAMPAIGN_DEMO]",
+  "adset_name": "[ADSET_DEMO]",
+  "ad_name": "[AD_DEMO]",
+  "form_name": "[FORM_DEMO]",
+  "lead_name": "[LEAD_NAME_DEMO]",
+  "email": "[EMAIL_DEMO]",
+  "phone": "[PHONE_DEMO]",
+  "city": "Demo City",
+  "province": "Demo Province",
+  "message": "Synthetic inquiry about product availability and wholesale conditions.",
+  "raw_status": "new",
+  "source_sheet_status": "read_only_source"
+}

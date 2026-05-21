@@ -1,0 +1,47 @@
+{
+  "demo_notice": "Synthetic demo data. Not based on real leads, emails, phone numbers, customers, prospects, social-media campaigns, Meta records, Odoo records, Google Sheets, logs, screenshots, or company data.",
+  "case_summary_id": "CRM-LEAD-INTAKE-DEMO-SUMMARY-0001",
+  "case_title": "CRM Lead Intake Automation with Gmail, Social Lead Sheets and Odoo",
+  "sources": [
+    {
+      "source_name": "Gmail / web-form emails",
+      "input_pattern": "Semi-structured email body",
+      "main_controls": [
+        "Gmail query",
+        "message ID idempotency",
+        "email parser",
+        "audit log",
+        "Odoo duplicate checks"
+      ]
+    },
+    {
+      "source_name": "Social / Meta leads via Google Sheets",
+      "input_pattern": "Rows already available in a source Sheet",
+      "main_controls": [
+        "read-only source handling",
+        "header validation",
+        "external lead identifier tracking",
+        "test-lead exclusion",
+        "audit workbook",
+        "Odoo duplicate checks"
+      ]
+    }
+  ],
+  "shared_destination": "Odoo CRM crm.lead",
+  "shared_controls": [
+    "DRY_RUN",
+    "run logs",
+    "health checks",
+    "deduplication",
+    "review-needed states",
+    "privacy-safe publication boundary"
+  ],
+  "out_of_scope": [
+    "WhatsApp direct processing",
+    "direct Instagram DM processing",
+    "direct Meta API ingestion as a public claim",
+    "conversion improvement",
+    "revenue impact",
+    "production volume"
+  ]
+}

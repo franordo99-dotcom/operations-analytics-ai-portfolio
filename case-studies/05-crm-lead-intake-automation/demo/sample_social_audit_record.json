@@ -1,0 +1,16 @@
+{
+  "demo_notice": "Synthetic demo data. Not based on real leads, emails, phone numbers, customers, prospects, social-media campaigns, Meta records, Odoo records, Google Sheets, logs, screenshots, or company data.",
+  "audit_record_id": "SOCIAL-AUDIT-DEMO-0001",
+  "run_id": "SOCIAL-RUN-DEMO-20260521-001",
+  "source_row_ref": "DEMO-SOCIAL-ROW-0001",
+  "external_lead_id_ref": "SOCIAL-LEAD-DEMO-0001",
+  "source_type": "social_lead_sheet",
+  "parse_status": "mapped",
+  "validation_status": "passed",
+  "deduplication_status": "no_duplicate_found",
+  "crm_write_status": "dry_run_only",
+  "review_status": "not_required_in_demo",
+  "created_at": "2026-05-21T14:31:00Z",
+  "updated_at": "2026-05-21T14:31:10Z",
+  "notes": "Synthetic operational audit record showing the control layer between source Sheet and Odoo CRM."
+}

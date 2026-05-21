@@ -28,7 +28,7 @@ Este portfolio no es un archivo crudo de chats, scripts ni documentos internos. 
 Tracks publicados:
 
 - **Procure-to-Pay Automation**: preparación de órdenes de compra, procesamiento de facturas, preparación de pagos y soporte de retenciones / workflow fiscal legacy.
-- **CRM / Sales Operations Automation**: intake de leads desde Gmail/formulario web, auditoría/staging en Google Sheets y creación de leads en Odoo CRM.
+- **CRM / Sales Operations Automation**: intake de leads desde Gmail/formulario web, social lead Sheets, auditoría/staging/control en Google Sheets y creación de leads en Odoo CRM.
 
 Posibles tracks futuros:
 
@@ -45,7 +45,7 @@ Estos tracks futuros todavía no están publicados; indican hacia dónde podría
 | [AI-Assisted Invoice Processing for Procurement Operations](case-studies/01-ai-assisted-invoice-processing/README.es.md) | Procurement / cuentas a pagar | Convertir facturas no estructuradas en borradores ERP controlados | OCR/IA, staging SQLite, validación, draft vendor bills en Odoo | IA aplicada, diseño de procesos, trazabilidad, controles AP |
 | [Risk-Controlled Payment Preparation Workflow in Odoo](case-studies/02-odoo-payment-order-preload/README.es.md) | Cuentas a pagar / P2P | Preparar registros de pago sin escrituras ERP descontroladas | Dry-run, validación, control de duplicados, workflow de pagos en Odoo, auditoría | Control financiero operativo, automatización ERP, manejo de excepciones |
 | [Legacy Tax Workflow Automation with Odoo and SICORE](case-studies/04-legacy-tax-workflow-automation/README.es.md) | Tax operations / sistemas legacy | Dar soporte a retenciones en un sistema desktop legacy sin API moderna | Extracción Odoo XML-RPC, archivos fixed-width, workbook de control, UI Win32 asistida | Automatización legacy, pensamiento RPA, diseño con control de riesgo |
-| [CRM Lead Intake Automation with Gmail, Sheets and Odoo](case-studies/05-crm-lead-intake-automation/README.md) | CRM / Sales Operations | Convertir emails de formulario web en leads trazables de CRM sin prometer omnicanalidad completa | Gmail, Google Apps Script, Google Sheets audit/staging, Odoo CRM, deduplicación | Automatización CRM, Sales Ops, calidad de datos, intake controlado de leads |
+| [CRM Lead Intake Automation with Gmail, Social Lead Sheets and Odoo](case-studies/05-crm-lead-intake-automation/README.md) | CRM / Sales Operations | Convertir emails de formulario web y social lead Sheets en leads trazables de CRM sin prometer cobertura completa de canales | Gmail, Google Apps Script, social lead Sheets, Google Sheets audit/staging/control, Odoo CRM, deduplicación | Automatización CRM, Sales Ops, calidad de datos, intake controlado multi-source de leads |
 
 Nota: el quinto case study está publicado por ahora en inglés. La versión completa en español puede agregarse en una tarea posterior.
 
