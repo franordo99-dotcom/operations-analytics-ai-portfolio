@@ -1,0 +1,20 @@
+{
+  "demo_notice": "Synthetic demo data. Not based on real leads, emails, phone numbers, customers, prospects, Odoo records, Sheets, logs, or company data.",
+  "message_id": "demo-message-0001",
+  "checks": [
+    {
+      "check": "audit_log_message_id",
+      "result": "not_found"
+    },
+    {
+      "check": "odoo_email_match",
+      "result": "not_found"
+    },
+    {
+      "check": "odoo_name_phone_match",
+      "result": "not_found"
+    }
+  ],
+  "decision": "create_crm_lead",
+  "warnings": []
+}

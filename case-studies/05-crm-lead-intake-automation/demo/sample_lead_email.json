@@ -1,0 +1,11 @@
+{
+  "demo_notice": "Synthetic demo data. Not based on real leads, emails, phone numbers, customers, prospects, Odoo records, Sheets, logs, or company data.",
+  "message_id": "demo-message-0001",
+  "thread_id": "demo-thread-0001",
+  "source_channel": "gmail_web_form",
+  "received_at": "2026-05-21T10:15:00Z",
+  "from_display": "Web Form Demo",
+  "from_email": "[EMAIL_DEMO]",
+  "subject": "New web form lead - demo",
+  "body_text": "Name: Demo Prospect\nEmail: [EMAIL_DEMO]\nPhone: [PHONE_DEMO]\nProvince: Demo Province\nCity: Demo City\nBusiness type: Demo Store\nEstimated volume: Demo Range\nMessage: Interested in wholesale information."
+}

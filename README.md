@@ -25,13 +25,13 @@ This portfolio is not a raw archive of chats, scripts, or internal documents. It
 
 ## Portfolio Tracks
 
-Published track:
+Published tracks:
 
 - **Procure-to-Pay Automation**: purchase order preparation, invoice processing, payment preparation, and withholding / legacy tax workflow support.
+- **CRM / Sales Operations Automation**: Gmail/web-form lead intake, Google Sheets audit/staging, and Odoo CRM lead creation.
 
 Possible future tracks:
 
-- **CRM / Sales Operations Automation**
 - **Procurement Analytics**
 - **Operations Intelligence**
 
@@ -45,6 +45,7 @@ These future tracks are not published yet; they indicate where the portfolio may
 | [AI-Assisted Invoice Processing for Procurement Operations](case-studies/01-ai-assisted-invoice-processing/README.md) | Procurement / accounts payable | Turn unstructured invoices into controlled ERP draft bills | OCR/AI parsing, SQLite staging, validation, Odoo draft vendor bills | Applied AI, process design, traceability, AP controls |
 | [Risk-Controlled Payment Preparation Workflow in Odoo](case-studies/02-odoo-payment-order-preload/README.md) | Accounts payable / P2P | Prepare payment records without uncontrolled ERP writes | Dry-run, validation, duplicate checks, Odoo payment workflow, audit outputs | Financial operations control, ERP automation, exception handling |
 | [Legacy Tax Workflow Automation with Odoo and SICORE](case-studies/04-legacy-tax-workflow-automation/README.md) | Tax operations / legacy systems | Support withholding workflows in a legacy desktop system without a modern API | Odoo XML-RPC extraction, fixed-width outputs, control workbook, Win32-assisted UI workflow | Legacy automation, RPA-style thinking, risk-aware design |
+| [CRM Lead Intake Automation with Gmail, Sheets and Odoo](case-studies/05-crm-lead-intake-automation/README.md) | CRM / Sales Operations | Turn web-form emails into traceable CRM leads without overclaiming omnichannel scope | Gmail, Google Apps Script, Google Sheets audit/staging, Odoo CRM, deduplication | CRM automation, Sales Ops, data quality, controlled lead intake |
 
 ## How To Read The Case Studies
 

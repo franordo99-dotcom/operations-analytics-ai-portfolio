@@ -1,0 +1,21 @@
+{
+  "demo_notice": "Synthetic demo data. Not based on real leads, emails, phone numbers, customers, prospects, Odoo records, Sheets, logs, or company data.",
+  "model": "crm.lead",
+  "operation": "create",
+  "dry_run": false,
+  "values": {
+    "name": "Lead Web - Demo Prospect",
+    "contact_name": "Demo Prospect",
+    "email_from": "[EMAIL_DEMO]",
+    "phone": "[PHONE_DEMO]",
+    "city": "Demo City",
+    "type": "lead",
+    "description": "Synthetic lead created from a demo web-form email.",
+    "source_ref": "[ODOO_SOURCE_DEMO]",
+    "team_ref": "[ODOO_TEAM_DEMO]",
+    "stage_ref": "[ODOO_STAGE_DEMO]",
+    "tag_refs": [
+      "[ODOO_TAG_DEMO]"
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "demo_notice": "Synthetic demo data. Not based on real leads, emails, phone numbers, customers, prospects, Odoo records, Sheets, logs, or company data.",
+  "audit_record": {
+    "message_id": "demo-message-0001",
+    "thread_id": "demo-thread-0001",
+    "source_channel": "gmail_web_form",
+    "lead_name": "Demo Prospect",
+    "email": "[EMAIL_DEMO]",
+    "phone": "[PHONE_DEMO]",
+    "status": "pending_crm_write",
+    "odoo_lead_ref": null,
+    "error_reason": null,
+    "run_id": "demo-run-20260521-001",
+    "attempt_count": 1,
+    "processed_at": "2026-05-21T10:16:00Z"
+  }
+}

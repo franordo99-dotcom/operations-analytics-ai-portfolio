@@ -1,0 +1,20 @@
+{
+  "demo_notice": "Synthetic demo data. Not based on real leads, emails, phone numbers, customers, prospects, Odoo records, Sheets, logs, or company data.",
+  "message_id": "demo-message-0001",
+  "parse_status": "parsed",
+  "lead_fields": {
+    "contact_name": "Demo Prospect",
+    "email": "[EMAIL_DEMO]",
+    "phone": "[PHONE_DEMO]",
+    "province": "Demo Province",
+    "city": "Demo City",
+    "business_type": "Demo Store",
+    "estimated_volume": "Demo Range",
+    "message": "Interested in wholesale information."
+  },
+  "minimum_validation": {
+    "has_name": true,
+    "has_email_or_phone": true,
+    "result": "eligible_for_deduplication"
+  }
+}
