@@ -1,5 +1,7 @@
 # AI-Assisted Invoice Processing for Procurement Operations
 
+Case type: Procurement automation / Invoice intake / AI-assisted ERP workflow
+
 ## Executive Summary
 
 Vendor invoice intake is a high-friction point in procurement operations: invoices arrive through different channels, key fields must be interpreted correctly, and ERP entry needs to be accurate, traceable, and controlled.

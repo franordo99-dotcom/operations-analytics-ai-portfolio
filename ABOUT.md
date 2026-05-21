@@ -16,3 +16,13 @@ This portfolio is a curated public view of that work. It highlights how I approa
 - Applied AI for administrative workflows
 - Human-in-the-loop process design
 - Data validation and auditability
+
+## Roles This Portfolio Supports
+
+- Operations Analyst
+- Procurement Analyst
+- Supply Chain Analyst
+- Business Analyst
+- Data / Automation Analyst
+- AI Operations
+- ERP Workflow Analyst
